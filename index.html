@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tugas Statistika Kelas XI</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f7fa;
+    color:#333;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+section{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+}
+
+.chart-container{
+    width:100%;
+    max-width:700px;
+    margin:30px auto;
+}
+
+footer{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+
+.stat-box{
+    background:#eef4ff;
+    padding:15px;
+    border-radius:10px;
+    line-height:2;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>TUGAS KOKURIKULER MATEMATIKA</h1>
+    <h3>Statistika Kelas XI</h3>
+    <p>Topik: Lama Penggunaan HP Siswa</p>
+    <p><strong>Nama Siswa:</strong>
+    <p><strong>Absen:</strong>
+    <p><strong>Kelas:</strong>
+    <p>*gunakan situs desktop agar dapat melihat situs dengan jelas</p>
+</header>
+
+<section>
+    <h2>Data Penggunaan HP Siswa</h2>
+
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Jam Penggunaan HP</th>
+        </tr>
+        <tr><td>1</td><td>2.3</td></tr>
+        <tr><td>2</td><td>3.1</td></tr>
+        <tr><td>3</td><td>4.2</td></tr>
+        <tr><td>4</td><td>5.4</td></tr>
+        <tr><td>5</td><td>6.1</td></tr>
+        <tr><td>6</td><td>4.5</td></tr>
+        <tr><td>7</td><td>5.2</td></tr>
+        <tr><td>8</td><td>3.7</td></tr>
+        <tr><td>9</td><td>7.3</td></tr>
+        <tr><td>10</td><td>4.8</td></tr>
+        <tr><td>11</td><td>5.1</td></tr>
+        <tr><td>12</td><td>6.4</td></tr>
+        <tr><td>13</td><td>4.3</td></tr>
+        <tr><td>14</td><td>3.5</td></tr>
+        <tr><td>15</td><td>5.7</td></tr>
+        <tr><td>16</td><td>8.2</td></tr>
+        <tr><td>17</td><td>6.8</td></tr>
+        <tr><td>18</td><td>4.1</td></tr>
+        <tr><td>19</td><td>5.6</td></tr>
+        <tr><td>20</td><td>7.1</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Hasil Pengolahan Data</h2>
+
+    <div class="stat-box">
+        <p><strong>Mean (Rata-rata)</strong> = 4,8 Jam</p>
+        <p><strong>Median</strong> = 5 Jam</p>
+        <p><strong>Modus</strong> = 4 dan 5 Jam</p>
+    </div>
+</section>
+
+<section>
+    <h2>Tabel Distribusi Frekuensi</h2>
+
+    <table>
+      <tr>
+        <th>Interval (Jam)</th>
+        <th>Frekuensi</th>
+      </tr>
+        <tr><td>2.0 - 3.9</td><td>4</td></tr>
+        <tr><td>4.0 - 5.9</td><td>10</td></tr>
+        <tr><td>6.0 - 7.9</td><td>5</td></tr>
+        <tr><td>8.0 - 9.9</td><td>1</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Diagram Batang</h2>
+    <div class="chart-container">
+        <canvas id="barChart"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Diagram Lingkaran</h2>
+    <div class="chart-container">
+        <canvas id="pieChart"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Histogram</h2>
+    <div class="chart-container">
+        <canvas id="histogramChart"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Kesimpulan</h2>
+
+    <p>
+        Berdasarkan data yang diperoleh dari 20 siswa, rata-rata penggunaan HP
+        adalah 4,8 jam per hari. Nilai median sebesar 5 jam menunjukkan bahwa
+        sebagian besar siswa menggunakan HP sekitar 5 jam per hari. Modus data
+        adalah 4 dan 5 jam karena kedua nilai tersebut paling sering muncul.
+    </p>
+</section>
+
+<footer>
+    
+</footer>
+
+<script>
+
+const labels = [
+'2.0-3.9',
+'4.0-5.9',
+'6.0-7.9',
+'8.0-9.9'
+];
+
+const dataFreq = [4,10,5,1];
+
+new Chart(document.getElementById('barChart'),{
+    type:'bar',
+    data:{
+        labels:labels,
+        datasets:[{
+            label:'Frekuensi',
+            data:dataFreq
+        }]
+    },
+    options:{
+        responsive:true
+    }
+});
+
+new Chart(document.getElementById('pieChart'),{
+    type:'pie',
+    data:{
+        labels:labels,
+        datasets:[{
+            data:dataFreq
+        }]
+    }
+});
+
+new Chart(document.getElementById('histogramChart'),{
+    type:'bar',
+    data:{
+        labels:labels,
+        datasets:[{
+            label:'Histogram',
+            data:dataFreq,
+            barPercentage:1,
+            categoryPercentage:1
+        }]
+    },
+    options:{
+        plugins:{
+            legend:{
+                display:false
+            }
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>
